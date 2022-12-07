@@ -99,7 +99,7 @@ public class RegisterServlet extends HttpServlet {
                 boolean result = dao.createAccount(dto);
                 if(result) {
 //                    url = LOGIN_PAGE;
-                    url = siteMaps.getProperty(MyApplicationConstants.RegisterFeature.LOGIN_PAGE);
+                    url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.LOGIN_PAGE);
 
                 } // create is success
             }

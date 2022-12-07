@@ -90,7 +90,7 @@ public class ReConfirmCheckoutServlet extends HttpServlet {
                 // re-confirm checkout --> go to confirmCheckout.jsp
                 request.setAttribute("USER_ERROR", preparedOrderCheckoutError);
                 request.setAttribute("PREPARED_ORDER", preparedOrder);
-                url = siteMaps.getProperty(MyApplicationConstants.ReConfirmCheckOutFeature.CONFIRM_CHECKOUT_PAGE);
+                url = siteMaps.getProperty(MyApplicationConstants.ConfirmCheckOutFeature.CONFIRM_CHECKOUT_PAGE);
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

@@ -56,7 +56,7 @@ public class FirstRequestServlet extends HttpServlet {
         Properties siteMaps = (Properties) context.getAttribute("SITE_MAPS");
         
         
-        String url = siteMaps.getProperty(MyApplicationConstants.FirstRequestFeature.LOGIN_PAGE);
+        String url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.LOGIN_PAGE);
         boolean dispatching = true;
 
         try {
@@ -120,12 +120,12 @@ public class FirstRequestServlet extends HttpServlet {
 
                 if (isAdmin) {
                     role = true; // admin's acc
-                    url = MyApplicationConstants.FirstRequestFeature.ACCOUNT_ADMINISTRATION_ACTION;
+                    url = MyApplicationConstants.ApplicationScope.ACCOUNT_ADMINISTRATION_ACTION;
                     dispatching = false;
                 } // end of admin
                 else {
                     role = false; // cust's acc
-                    url = MyApplicationConstants.FirstRequestFeature.SHOPPING_ACTION;
+                    url = MyApplicationConstants.ApplicationScope.SHOPPING_ACTION;
                     dispatching = false;
                 } // end of cust
             }

@@ -39,7 +39,7 @@ public class AddToCartServlet extends HttpServlet {
         Properties siteMaps = (Properties) context.getAttribute("SITE_MAPS");
         
 //        String url = ERROR_PAGE;        
-        String url = MyApplicationConstants.AddToCartFeature.ERROR_PAGE;
+        String url = MyApplicationConstants.ApplicationScope.ERROR_PAGE;
         
         try {
             //1. Cust goes to cart placement
@@ -57,7 +57,7 @@ public class AddToCartServlet extends HttpServlet {
             session.setAttribute("CART", cart);
             //5. Cust continuely goes to shopping --> countinue/refresh SHOPPING PAGE
 //            url = SHOPPING_URL;
-            url = MyApplicationConstants.AddToCartFeature.SHOPPING_ACTION;
+            url = MyApplicationConstants.ApplicationScope.SHOPPING_ACTION;
         }
         finally {
             response.sendRedirect(url);

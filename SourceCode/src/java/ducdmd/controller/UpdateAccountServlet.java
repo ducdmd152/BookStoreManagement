@@ -38,7 +38,7 @@ public class UpdateAccountServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
 //        String url = ERROR_PAGE;
-        String url = MyApplicationConstants.UpdateAccountFeature.ERROR_PAGE;
+        String url = MyApplicationConstants.ApplicationScope.ERROR_PAGE;
         
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
@@ -61,7 +61,7 @@ public class UpdateAccountServlet extends HttpServlet {
 //                url = "DispatchController"
 //                        + "?btAction=Search"
 //                        + "&txtSearchValue=" + searchValue;
-                url = MyApplicationConstants.UpdateAccountFeature.SEARCH_LASTNAME_ACTION
+                url = MyApplicationConstants.ApplicationScope.SEARCH_LASTNAME_ACTION
                         + "?txtSearchValue=" + searchValue;
             }
         } catch (NoSuchAlgorithmException ex) {

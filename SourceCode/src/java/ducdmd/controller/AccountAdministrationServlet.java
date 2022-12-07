@@ -42,7 +42,7 @@ public class AccountAdministrationServlet extends HttpServlet {
         Properties siteMaps = (Properties) context.getAttribute("SITE_MAPS");
         
 //        String url = LOGIN_PAGE;
-        String url = siteMaps.getProperty(MyApplicationConstants.AccountAdministrationFeature.LOGIN_PAGE);
+        String url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.LOGIN_PAGE);
         
         try {
             /// 1. Check current role of user in session => authorization
@@ -53,7 +53,7 @@ public class AccountAdministrationServlet extends HttpServlet {
                     boolean isAdmin = user.isRole();
                     if(isAdmin) {
 //                        url = SEARCH_PAGE;
-                        url = siteMaps.getProperty(MyApplicationConstants.AccountAdministrationFeature.SEARCH_PAGE);
+                        url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.SEARCH_PAGE);
                     }
                     else {
 //                        url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;

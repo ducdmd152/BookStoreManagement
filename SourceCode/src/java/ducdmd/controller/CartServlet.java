@@ -37,7 +37,7 @@ public class CartServlet extends HttpServlet {
         ServletContext context = this.getServletContext();
         Properties siteMaps = (Properties) context.getAttribute("SITE_MAPS");
 
-        String url = siteMaps.getProperty(MyApplicationConstants.CartFeature.VIEW_CART_ACTION);
+        String url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.VIEW_CART_ACTION);
 
         // Which button did user click?
         String action = request.getParameter("btAction");

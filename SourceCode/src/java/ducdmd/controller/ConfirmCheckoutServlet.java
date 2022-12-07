@@ -50,7 +50,7 @@ public class ConfirmCheckoutServlet extends HttpServlet {
 //                + "?btAction=" + "View Your Cart";
 //        String url = MyApplicationConstants.ConfirmCheckOutFeature.VIEW_CART_ACTION;
         String url = siteMaps.getProperty(
-                MyApplicationConstants.ConfirmCheckOutFeature.CHECKOUT_FAIL_PAGE
+                MyApplicationConstants.CheckOutFeature.CHECKOUT_FAIL_PAGE
             );
         boolean dispatching = true;
 
@@ -97,7 +97,7 @@ public class ConfirmCheckoutServlet extends HttpServlet {
                                 dispatching = true;
                             }
                         } else {
-                            url = MyApplicationConstants.ConfirmCheckOutFeature.VIEW_CART_ACTION;
+                            url = MyApplicationConstants.ApplicationScope.VIEW_CART_ACTION;
                             dispatching = false;
                         }
                     }

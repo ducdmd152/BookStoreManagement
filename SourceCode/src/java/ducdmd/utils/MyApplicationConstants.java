@@ -11,42 +11,52 @@ package ducdmd.utils;
  */
 public class MyApplicationConstants {
 
-    public class FirstRequestFeature {
-
+    public class ApplicationScope {
+        public static final String HOME_ACTION = "";
         public static final String LOGIN_PAGE = "loginPage";
         public static final String ACCOUNT_ADMINISTRATION_ACTION = "accountAdministrationAction";
         public static final String SHOPPING_ACTION = "shoppingAction";
+        public static final String VIEW_CART_ACTION = "viewCartAction";
+        public static final String ERROR_PAGE = "errorPage";
+        public static final String SEARCH_PAGE = "searchPage";
+        public static final String SEARCH_LASTNAME_ACTION = "searchLastnameAction";
+        public static final String LOGOUT_ACTION = "logoutAction";
+    }
+    
+    public class FirstRequestFeature {
+//        public static final String LOGIN_PAGE = "loginPage";
+//        public static final String ACCOUNT_ADMINISTRATION_ACTION = "accountAdministrationAction";
+//        public static final String SHOPPING_ACTION = "shoppingAction";
     }
 
     public class LoginFeature {
         public static final String LOGIN_ERROR_PAGE = "loginErrorPage";
         public static final String INVALID_PAGE = "invalidPage";
-        public static final String ACCOUNT_ADMINISTRATION_ACTION = "accountAdministrationAction";
-        public static final String SHOPPING_ACTION = "shoppingAction";
+//        public static final String ACCOUNT_ADMINISTRATION_ACTION = "accountAdministrationAction";
+//        public static final String SHOPPING_ACTION = "shoppingAction";
 
     }
 
     public class LogoutFeature {
-
-        public static final String LOGIN_PAGE = "loginPage";
+//        public static final String LOGIN_PAGE = "loginPage";
     }
 
     public class RegisterFeature {
-        public static final String LOGIN_PAGE = "loginPage";
+//        public static final String LOGIN_PAGE = "loginPage";
         public static final String ERROR_PAGE = "registerErrorPage";
     }
     
     public class AuthorizationFeature {
-        public static final String HOME_ACTION = "";
-        public static final String LOGIN_PAGE = "loginPage";
-        public static final String LOGOUT_ACTION = "logoutAction";
-        public static final String ACCOUNT_ADMINISTRATION_ACTION = "accountAdministrationAction";
-        public static final String SHOPPING_ACTION = "shoppingAction";
-        public static final String VIEW_CART_ACTION = "viewCartAction";
+//        public static final String HOME_ACTION = "";
+//        public static final String LOGIN_PAGE = "loginPage";
+//        public static final String LOGOUT_ACTION = "logoutAction";
+//        public static final String ACCOUNT_ADMINISTRATION_ACTION = "accountAdministrationAction";
+//        public static final String SHOPPING_ACTION = "shoppingAction";
+//        public static final String VIEW_CART_ACTION = "viewCartAction";
     }
     
     public class CartFeature {
-        public static final String VIEW_CART_ACTION = "viewCartAction";
+//        public static final String VIEW_CART_ACTION = "viewCartAction";
         public static final String REMOVE_ITEM_FROM_CART_ACTION = "removeItemFromCartAction";
         public static final String CONFIRM_CHECKOUT_ACTION = "confirmCheckoutAction";
     }
@@ -56,8 +66,8 @@ public class MyApplicationConstants {
     }
     
     public class AddToCartFeature {
-        public static final String ERROR_PAGE = "errorPage";
-        public static final String SHOPPING_ACTION = "shoppingAction";
+//        public static final String ERROR_PAGE = "errorPage";
+//        public static final String SHOPPING_ACTION = "shoppingAction";
     }
     
     public class ViewCartFeature {
@@ -65,12 +75,12 @@ public class MyApplicationConstants {
     }
     
     public class RemoveItemFromCartFeature {
-        public static final String VIEW_CART_ACTION = "viewCartAction";
+//        public static final String VIEW_CART_ACTION = "viewCartAction";
     }
 
     public class ConfirmCheckOutFeature {
-        public static final String CHECKOUT_FAIL_PAGE = "checkOutFailPage";
-        public static final String VIEW_CART_ACTION = "viewCartAction";
+//        public static final String CHECKOUT_FAIL_PAGE = "checkOutFailPage";
+//        public static final String VIEW_CART_ACTION = "viewCartAction";
         public static final String CONFIRM_CHECKOUT_PAGE = "confirmCheckoutPage";
     }
     
@@ -82,14 +92,13 @@ public class MyApplicationConstants {
     }
 
     public class ReConfirmCheckOutFeature {
-
         public static final String CHECKOUT_FAIL_PAGE = "checkOutFailPage";
-        public static final String CONFIRM_CHECKOUT_PAGE = "confirmCheckoutPage";
+//        public static final String CONFIRM_CHECKOUT_PAGE = "confirmCheckoutPage";
     }
     
     public class AccountAdministrationFeature {
-        public static final String LOGIN_PAGE = "loginPage";
-        public static final String SEARCH_PAGE = "searchPage";
+//        public static final String LOGIN_PAGE = "loginPage";
+//        public static final String SEARCH_PAGE = "searchPage";
         public static final String ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE = "roleFeatureAuthorizationErrorPage";
     }
     public class SearchLastnameFeature {
@@ -99,8 +108,8 @@ public class MyApplicationConstants {
     }
     
     public class UpdateAccountFeature {
-        public static final String ERROR_PAGE = "errorPage";
-        public static final String SEARCH_LASTNAME_ACTION = "searchLastnameAction";
+//        public static final String ERROR_PAGE = "errorPage";
+//        public static final String SEARCH_LASTNAME_ACTION = "searchLastnameAction";
     }
     
     public class DeleteAccountFeature {
