@@ -45,7 +45,7 @@ public class UpdateAccountServlet extends HttpServlet {
         boolean role = request.getParameter("isAdmin")!=null;
         String searchValue = request.getParameter("lastSearchValue");
         
-        try {
+        try {            
             // 1. Call DAO
             RegistrationDAO dao = new RegistrationDAO();
             boolean result = true;
@@ -62,8 +62,9 @@ public class UpdateAccountServlet extends HttpServlet {
 //                        + "?btAction=Search"
 //                        + "&txtSearchValue=" + searchValue;
                 url = MyApplicationConstants.ApplicationScope.SEARCH_LASTNAME_ACTION
-                        + "?txtSearchValue=" + searchValue;
-            }
+                        + "?txtSearchValue=" + searchValue
+                        + "&updated=" + username;
+            }           
         } catch (NoSuchAlgorithmException ex) {
             log("UpdateAccountServlet _PASSWORD_HASHING: " + ex.getMessage());
         } catch (SQLException ex) {
