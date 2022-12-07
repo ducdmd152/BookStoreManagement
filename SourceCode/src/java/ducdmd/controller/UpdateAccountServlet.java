@@ -5,6 +5,7 @@
  */
 package ducdmd.controller;
 
+import ducdmd.registration.RegistrationCreateError;
 import ducdmd.registration.RegistrationDAO;
 import ducdmd.utils.MyApplicationConstants;
 import ducdmd.utils.SHA256;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UpdateAccountServlet extends HttpServlet {
 //    private String ERROR_PAGE = "error.html";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,48 +38,59 @@ public class UpdateAccountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
 //        String url = ERROR_PAGE;
         String url = MyApplicationConstants.ApplicationScope.ERROR_PAGE;
-        
+
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
-        boolean role = request.getParameter("isAdmin")!=null;
+        boolean role = request.getParameter("isAdmin") != null;
         String searchValue = request.getParameter("lastSearchValue");
-        
-        try {            
-            // 1. Call DAO
-            RegistrationDAO dao = new RegistrationDAO();
-            boolean result = true;
-            
-            if(password.trim().isEmpty()==false) {         
-                result = result && dao.updateAccountPassword(username, SHA256.getHash(password.trim()));
+
+        boolean errorFound = false;
+        RegistrationCreateError errors = new RegistrationCreateError();
+
+        try {
+            // 0. Check user's errors
+            password = password.trim();
+            if (password.length() < 8 || password.length() > 20) { /// use regex for enhance UX
+                errorFound = true;
+                errors.setPasswordLengthError("Password is required input from 8 to 20 characters");
             }
-            
-            result = result && dao.updateAccountRole(username, role);
-            
-            // 2. Refresh by call Search Function again using URL Rewriting
-            if(result) {
+
+            if (errorFound) {                                
+                url = MyApplicationConstants.ApplicationScope.SEARCH_LASTNAME_ACTION
+                            + "?txtSearchValue=" + searchValue
+                            + "&errors=" + errors.getPasswordLengthError();
+            } else {
+                // 1. Call DAO
+                RegistrationDAO dao = new RegistrationDAO();
+                boolean result = true;
+                result = result && dao.updateAccountPassword(username, SHA256.getHash(password));
+                result = result && dao.updateAccountRole(username, role);
+
+                // 2. Refresh by call Search Function again using URL Rewriting
+                if (result) {
 //                url = "DispatchController"
 //                        + "?btAction=Search"
 //                        + "&txtSearchValue=" + searchValue;
-                url = MyApplicationConstants.ApplicationScope.SEARCH_LASTNAME_ACTION
-                        + "?txtSearchValue=" + searchValue
-                        + "&updated=" + username;
-            }           
+                    url = MyApplicationConstants.ApplicationScope.SEARCH_LASTNAME_ACTION
+                            + "?txtSearchValue=" + searchValue
+                            + "&updated=" + username;
+                }
+            }
         } catch (NoSuchAlgorithmException ex) {
             log("UpdateAccountServlet _PASSWORD_HASHING: " + ex.getMessage());
         } catch (SQLException ex) {
             log("UpdateAccountServlet _SQL: " + ex.getMessage());
         } catch (NamingException ex) {
             log("UpdateAccountServlet _Naming: " + ex.getMessage());
-        }
-        finally {
-             response.sendRedirect(url);
+        } finally {
+            response.sendRedirect(url);
             // using for url rewriting
             /// 1. undercontrol --> duplicated name for parameters
             /// 2. reduce cost --> ending the request scope
-            
+
 //            RequestDispatcher rd = request.getRequestDispatcher(url);
 //            rd.forward(request, response);
         }

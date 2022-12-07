@@ -44,6 +44,9 @@
         <c:if test="${not empty searchValue}">
             <c:set var="result" value="${requestScope.SEARCH_RESULT}"/>
             <c:if test="${not empty result}">
+                <font color="red" style="font-size: 16px">                                        
+                ${param.errors}
+                </font>
                 <table border="1">
                     <thead>
                         <tr>
@@ -71,67 +74,67 @@
                                 <td>
                                     <!--<input type="text" name="txtPassword" value="${dto.password}" />--> 
                                     <input type="text" name="txtPassword" value="" 
-                                            <c:if test="${param.updated==dto.username}">
-                                                placeholder="Updated successfully."                                           
-                                            </c:if>                                           
-                                        />
-                        </td>
-                        <td>
-                            ${dto.fullName}
-                        </td>
-                        <td>                                    
-                            <input type="checkbox" name="isAdmin" value="ON"
-                                   ${dto.role ? "checked" : ""}
-                                   ${dto.username==sessionScope.USER.username || dto.role==true? "onclick='return false;'" : ""}
-                                   />
-                        </td>
-                        <td>
-                            <c:if test="${dto.username!=sessionScope.USER.username && dto.role!=true}">                                        
-                                <%--<c:url var="urlRewriting" value="DispatchController">--%>
-                                <c:url var="urlRewriting" value="deleteAccounAction">
-                                    <%--<c:param name="btAction" value="delete"/>--%>
-                                    <c:param name="pk" value="${dto.username}"/>
-                                    <c:param name="lastSearchValue" value="${searchValue}"/>
-                                </c:url>                                    
-                                <a href="${urlRewriting}">Delete</a>
-                            </c:if>
-                        </td>
+                                           <c:if test="${param.updated==dto.username}">
+                                               placeholder="Updated successfully."                                           
+                                           </c:if>                                           
+                                           />                                    
+                                </td>
+                                <td>
+                                    ${dto.fullName}
+                                </td>
+                                <td>                                    
+                                    <input type="checkbox" name="isAdmin" value="ON"
+                                           ${dto.role ? "checked" : ""}
+                                           ${dto.username==sessionScope.USER.username || dto.role==true? "onclick='return false;'" : ""}
+                                           />
+                                </td>
+                                <td>
+                                    <c:if test="${dto.username!=sessionScope.USER.username && dto.role!=true}">                                        
+                                        <%--<c:url var="urlRewriting" value="DispatchController">--%>
+                                        <c:url var="urlRewriting" value="deleteAccounAction">
+                                            <%--<c:param name="btAction" value="delete"/>--%>
+                                            <c:param name="pk" value="${dto.username}"/>
+                                            <c:param name="lastSearchValue" value="${searchValue}"/>
+                                        </c:url>                                    
+                                        <a href="${urlRewriting}">Delete</a>
+                                    </c:if>
+                                </td>
 
-                        <td>
-                            <input type="hidden" name="lastSearchValue"
-                                   value="${searchValue}" />
-                            <input type="submit" value="Update" name="btAction" />
-                        </td>
-                    </tr>
-                </form>
-            </c:forEach>
-        </tbody>
-    </table>
+                                <td>
+                                    <input type="hidden" name="lastSearchValue"
+                                           value="${searchValue}" />
+                                    <input type="submit" value="Update" name="btAction" />
+                                </td>
+                            </tr>
+                        </form>
+                    </c:forEach>
+                </tbody>
+            </table>
 
-</c:if>
+        </c:if>
 
-<c:if test="${empty result}">
-    <h2>
-        No record is matched!!!
-    </h2>
-</c:if>
-</c:if>
-<%-- <font color="green">
-    <%
-        String username = null;
-        Cookie[] cookies = request.getCookies();
-        if(cookies != null ) {
-            Cookie lastCookie = cookies[cookies.length-1];
-//                    username = lastCookie.getName();
-            username = (String) request.getAttribute("username");
-            %>
-            Welcome, <%= username %>
-    <%                    
-        }
-    %>
-    
-</font>
-<h1>Search Page</h1>
+        <c:if test="${empty result}">
+            <h2>
+                No record is matched!!!
+            </h2>
+        </c:if>
+    </c:if>
+    <%-- <font color="green">
+        <%
+            String username = null;
+            Cookie[] cookies = request.getCookies();
+            if(cookies != null ) {
+                Cookie lastCookie = cookies[cookies.length-1];
+    //                    username = lastCookie.getName();
+                username = (String) request.getAttribute("username");
+                %>
+                Welcome, <%= username %>
+        <%                    
+            }
+        %>
+        
+    </font>
+    <h1>Search Page</h1>
 
 <%
     String searchValue = request.getParameter("txtSearchValue");
