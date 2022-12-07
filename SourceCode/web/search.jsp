@@ -78,11 +78,11 @@
                                 <td>                                    
                                     <input type="checkbox" name="isAdmin" value="ON"
                                            ${dto.role ? "checked" : ""}
-                                           ${dto.username==sessionScope.USER.username ? "onclick='return false;'" : ""}
+                                           ${dto.username==sessionScope.USER.username || dto.role==true? "onclick='return false;'" : ""}
                                            />
                                 </td>
                                 <td>
-                                    <c:if test="${dto.username!=sessionScope.USER.username}">                                        
+                                    <c:if test="${dto.username!=sessionScope.USER.username && dto.role!=true}">                                        
                                         <%--<c:url var="urlRewriting" value="DispatchController">--%>
                                         <c:url var="urlRewriting" value="deleteAccounAction">
                                             <%--<c:param name="btAction" value="delete"/>--%>
