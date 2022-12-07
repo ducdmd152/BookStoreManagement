@@ -44,17 +44,17 @@ public class Authorization {
     public Authorization() {
         featureNavs = new HashMap<>();
         
-        featureNavs.put(HOME_FEATURE_LABEL , MyApplicationConstants.AuthorizationFeature.HOME_ACTION);        
+        featureNavs.put(HOME_FEATURE_LABEL , MyApplicationConstants.ApplicationScope.HOME_ACTION);        
         
-        featureNavs.put(LOGIN_FEATURE_LABEL, MyApplicationConstants.AuthorizationFeature.LOGIN_PAGE);
+        featureNavs.put(LOGIN_FEATURE_LABEL, MyApplicationConstants.ApplicationScope.LOGIN_PAGE);
         
-        featureNavs.put(LOGOUT_FEATURE_LABEL, MyApplicationConstants.AuthorizationFeature.LOGOUT_ACTION);
+        featureNavs.put(LOGOUT_FEATURE_LABEL, MyApplicationConstants.ApplicationScope.LOGOUT_ACTION);
         
-        featureNavs.put(ACCOUNT_ADMINISTRATION_FEATURE_LABEL, MyApplicationConstants.AuthorizationFeature.ACCOUNT_ADMINISTRATION_ACTION);
+        featureNavs.put(ACCOUNT_ADMINISTRATION_FEATURE_LABEL, MyApplicationConstants.ApplicationScope.ACCOUNT_ADMINISTRATION_ACTION);
         
-        featureNavs.put(SHOPPING_FEATURE_LABEL, MyApplicationConstants.AuthorizationFeature.SHOPPING_ACTION);
+        featureNavs.put(SHOPPING_FEATURE_LABEL, MyApplicationConstants.ApplicationScope.SHOPPING_ACTION);
         
-        featureNavs.put(VIEW_CART_FEATURE_LABEL, MyApplicationConstants.AuthorizationFeature.VIEW_CART_ACTION);
+        featureNavs.put(VIEW_CART_FEATURE_LABEL, MyApplicationConstants.ApplicationScope.VIEW_CART_ACTION);
     }
     
     public List<Pair<String, String>> getFeatureNavs(Boolean role) {

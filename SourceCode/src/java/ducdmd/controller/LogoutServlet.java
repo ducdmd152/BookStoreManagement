@@ -68,7 +68,7 @@ public class LogoutServlet extends HttpServlet {
         }
         finally {
             //4. Move to login page
-            String url = siteMaps.getProperty(MyApplicationConstants.LogoutFeature.LOGIN_PAGE);
+            String url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.LOGIN_PAGE);
 //            response.sendRedirect(url);
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

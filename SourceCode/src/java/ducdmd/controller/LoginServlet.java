@@ -91,11 +91,11 @@ public class LoginServlet extends HttpServlet {
                 /// 2.3 Go to Welcome Page
                 boolean isAdmin = result.isRole();
                 if (isAdmin) {
-                    url = MyApplicationConstants.LoginFeature.ACCOUNT_ADMINISTRATION_ACTION;
+                    url = MyApplicationConstants.ApplicationScope.ACCOUNT_ADMINISTRATION_ACTION;
                     dispatching = false;
                 } // end of admin authorization
                 else {
-                    url = MyApplicationConstants.LoginFeature.SHOPPING_ACTION;
+                    url = MyApplicationConstants.ApplicationScope.SHOPPING_ACTION;
                     dispatching = false;
                 } // end of un-admin authorization 
             } // end of login successfully

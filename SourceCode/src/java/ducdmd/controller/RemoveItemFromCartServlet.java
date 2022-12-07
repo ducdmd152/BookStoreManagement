@@ -34,7 +34,7 @@ public class RemoveItemFromCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String url = MyApplicationConstants.RemoveItemFromCartFeature.VIEW_CART_ACTION; 
+        String url = MyApplicationConstants.ApplicationScope.VIEW_CART_ACTION; 
         
         try {
             //1. Cust goes to his/her cart placement
