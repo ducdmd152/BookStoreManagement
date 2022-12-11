@@ -7,17 +7,21 @@ package ducdmd.controller;
 
 import ducdmd.registration.RegistrationCreateError;
 import ducdmd.registration.RegistrationDAO;
+import ducdmd.registration.RegistrationDTO;
 import ducdmd.utils.MyApplicationConstants;
 import ducdmd.utils.SHA256;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.Properties;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,6 +43,8 @@ public class UpdateAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        ServletContext context = this.getServletContext();
+        Properties siteMaps = (Properties) context.getAttribute("SITE_MAPS");
 //        String url = ERROR_PAGE;
         String url = MyApplicationConstants.ApplicationScope.ERROR_PAGE;
 
@@ -51,6 +57,21 @@ public class UpdateAccountServlet extends HttpServlet {
         RegistrationCreateError errors = new RegistrationCreateError();
 
         try {
+            // 0-. Check cust/guest try to use the feature
+            HttpSession session = request.getSession(false);
+            boolean isAdmin = false;
+            if (session != null) {
+                RegistrationDTO user = (RegistrationDTO) session.getAttribute("USER");
+                if (user != null) {
+                    isAdmin = user.isRole();
+                }
+            }
+            if (isAdmin == false) {
+//                url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
+                url = MyApplicationConstants.ApplicationScope.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
+                return; /// report the error to user
+            }
+
             // 0. Check user's errors
             password = password.trim();
             if (password.length() < 8 || password.length() > 20) { /// use regex for enhance UX
@@ -58,10 +79,10 @@ public class UpdateAccountServlet extends HttpServlet {
                 errors.setPasswordLengthError("Password is required input from 8 to 20 characters");
             }
 
-            if (errorFound) {                                
+            if (errorFound) {
                 url = MyApplicationConstants.ApplicationScope.SEARCH_LASTNAME_ACTION
-                            + "?txtSearchValue=" + searchValue
-                            + "&errors=" + errors.getPasswordLengthError();
+                        + "?txtSearchValue=" + searchValue
+                        + "&errors=" + errors.getPasswordLengthError();
             } else {
                 // 1. Call DAO
                 RegistrationDAO dao = new RegistrationDAO();

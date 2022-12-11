@@ -62,7 +62,7 @@ public class SearchLastnameServlet extends HttpServlet {
             }
             if(isAdmin==false) {
 //                url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
-                url = siteMaps.getProperty(MyApplicationConstants.SearchLastnameFeature.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
+                url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
                 return; /// report the error to user
             }
             

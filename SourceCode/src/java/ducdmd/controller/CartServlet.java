@@ -5,6 +5,7 @@
  */
 package ducdmd.controller;
 
+import ducdmd.registration.RegistrationDTO;
 import ducdmd.utils.MyApplicationConstants;
 import java.io.IOException;
 import java.util.Properties;
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,6 +45,21 @@ public class CartServlet extends HttpServlet {
         String action = request.getParameter("btAction");
 
         try {
+             // 0. Authorize (bussiness rule: admin's role is not allowed to use shopping features)
+            HttpSession session = request.getSession(false);
+            boolean isAdmin = false;
+            if(session!=null) {
+                RegistrationDTO user = (RegistrationDTO) session.getAttribute("USER");
+                if(user!=null) {
+                    isAdmin = user.isRole();
+                }
+            }
+            if(isAdmin) {
+//                url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
+                url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
+                return; /// report the error to user
+            }
+            
             if (action.equals("Remove Selected Items")) {
                 url = siteMaps.getProperty(MyApplicationConstants.CartFeature.REMOVE_ITEM_FROM_CART_ACTION);
             }

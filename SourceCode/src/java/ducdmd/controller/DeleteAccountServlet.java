@@ -6,14 +6,18 @@
 package ducdmd.controller;
 
 import ducdmd.registration.RegistrationDAO;
+import ducdmd.registration.RegistrationDTO;
 import ducdmd.utils.MyApplicationConstants;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +38,9 @@ public class DeleteAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        ServletContext context = this.getServletContext();
+        Properties siteMaps = (Properties) context.getAttribute("SITE_MAPS");
+        
 //        String url = ERROR_PAGE;
         String url = MyApplicationConstants.ApplicationScope.ERROR_PAGE;
         
@@ -41,6 +48,20 @@ public class DeleteAccountServlet extends HttpServlet {
         String searchValue = request.getParameter("lastSearchValue");
         
         try {
+            // 0. Check cust/guest try to use the feature
+            HttpSession session = request.getSession(false);
+            boolean isAdmin = false;
+            if(session!=null) {
+                RegistrationDTO user = (RegistrationDTO) session.getAttribute("USER");
+                if(user!=null) {
+                    isAdmin = user.isRole();
+                }
+            }
+            if(isAdmin==false) {
+//                url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
+                url = MyApplicationConstants.ApplicationScope.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
+                return; /// report the error to user
+            }
             // 1. Call DAO
             RegistrationDAO dao = new RegistrationDAO();
             boolean result = dao.deleteAccount(username);

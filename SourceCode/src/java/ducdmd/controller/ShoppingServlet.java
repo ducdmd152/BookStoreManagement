@@ -63,7 +63,7 @@ public class ShoppingServlet extends HttpServlet {
             }
             if(isAdmin) {
 //                url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
-                url = siteMaps.getProperty(MyApplicationConstants.SearchLastnameFeature.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
+                url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
                 return; /// report the error to user
             }
             

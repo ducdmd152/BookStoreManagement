@@ -61,58 +61,58 @@ public class FirstRequestServlet extends HttpServlet {
 
         try {
             // Check logined-user exist in session ~ for case user in a session + url without any parameter + cookie timeout
-            HttpSession session = request.getSession(false);
-            if (session == null || session.getAttribute("USER") == null) { // ~ if NOT: session already has user => try to AUTO-LOGIN with USER
-                // 1. get candidate username:password pairs            
-                /// by cookies
-                Cookie[] cookies = request.getCookies();
-                String cookieUsername = null;
-                String cookiePassword = null;
-
-                if (cookies != null) {
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("username")) {
-                            cookieUsername = cookie.getValue();
-                        }
-
-                        if (cookie.getName().equals("password")) {
-                            cookiePassword = cookie.getValue();
-                        }
-                    }
-                } // end cookies has existed
-
-                // 2. Check valid username:password
-                RegistrationDAO dao = new RegistrationDAO();
-
-                RegistrationDTO result = null;
-                String username = null;
-                String password = null;
-
-                /// Check cookie's pair  
-                if (cookieUsername != null && cookiePassword != null) {                    
-                    result = dao.checkLogin(cookieUsername, SHA256.getHash(cookiePassword));
-                    if (result != null) {
-                        username = cookieUsername;
-                        password = cookiePassword;
-                    }
-                }
-
-                /// 2.2 Process result
-                Boolean role = null;
-                if (result != null) {
-
-                    /// 2.2.1 Saving username:password for session tracking
-                    session = request.getSession(true); /// need be existed
-                    session.setAttribute("USER", result);
-                } // end of auto login successfully
-                else {
-
-                } // end of auto login fail
-            }
+//            HttpSession session = request.getSession(false);
+//            if (session == null || session.getAttribute("USER") == null) { // ~ if NOT: session already has user => try to AUTO-LOGIN with USER
+//                // 1. get candidate username:password pairs            
+//                /// by cookies
+//                Cookie[] cookies = request.getCookies();
+//                String cookieUsername = null;
+//                String cookiePassword = null;
+//
+//                if (cookies != null) {
+//                    for (Cookie cookie : cookies) {
+//                        if (cookie.getName().equals("username")) {
+//                            cookieUsername = cookie.getValue();
+//                        }
+//
+//                        if (cookie.getName().equals("password")) {
+//                            cookiePassword = cookie.getValue();
+//                        }
+//                    }
+//                } // end cookies has existed
+//
+//                // 2. Check valid username:password
+//                RegistrationDAO dao = new RegistrationDAO();
+//
+//                RegistrationDTO result = null;
+//                String username = null;
+//                String password = null;
+//
+//                /// Check cookie's pair  
+//                if (cookieUsername != null && cookiePassword != null) {                    
+//                    result = dao.checkLogin(cookieUsername, SHA256.getHash(cookiePassword));
+//                    if (result != null) {
+//                        username = cookieUsername;
+//                        password = cookiePassword;
+//                    }
+//                }
+//
+//                /// 2.2 Process result
+//                Boolean role = null;
+//                if (result != null) {
+//
+//                    /// 2.2.1 Saving username:password for session tracking
+//                    session = request.getSession(true); /// need be existed
+//                    session.setAttribute("USER", result);
+//                } // end of auto login successfully
+//                else {
+//
+//                } // end of auto login fail
+//            }
 
             Boolean role = null; // un-logined
 
-            session = request.getSession(); // session is existed surely
+            HttpSession session = request.getSession(true); // session is existed surely
             RegistrationDTO user = (RegistrationDTO) session.getAttribute("USER");
             
             if (user != null) { // logined
@@ -136,15 +136,15 @@ public class FirstRequestServlet extends HttpServlet {
             session.setAttribute("FEATURE_NAVS", featureNavs);
             // end of already user acc exist in session        
     }
-    catch (NoSuchAlgorithmException ex) {
-            log("FirstRequestServlet _PASSWORD_HASHING: " + ex.getMessage());
-    }
-    catch (SQLException ex) {
-            log("FirstRequestServlet _SQL: " + ex.getMessage());
-    }
-    catch (NamingException ex) {
-            log("FirstRequestServlet _Naming: " + ex.getMessage());
-    }
+//    catch (NoSuchAlgorithmException ex) {
+//            log("FirstRequestServlet _PASSWORD_HASHING: " + ex.getMessage());
+//    }
+//    catch (SQLException ex) {
+//            log("FirstRequestServlet _SQL: " + ex.getMessage());
+//    }
+//    catch (NamingException ex) {
+//            log("FirstRequestServlet _Naming: " + ex.getMessage());
+//    }
     finally {
         if(dispatching) { // che duong truyen file login.html
             RequestDispatcher rd = request.getRequestDispatcher(url);
