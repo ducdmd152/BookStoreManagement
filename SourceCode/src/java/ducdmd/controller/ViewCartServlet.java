@@ -7,6 +7,7 @@ package ducdmd.controller;
 
 import ducdmd.cart.CartObject;
 import ducdmd.product.ProductObject;
+import ducdmd.registration.RegistrationDTO;
 import ducdmd.utils.MyApplicationConstants;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,7 +48,22 @@ public class ViewCartServlet extends HttpServlet {
         String url = siteMaps.getProperty(MyApplicationConstants.ViewCartFeature.VIEW_CART_PAGE);
         
         try {
+             // 0. Authorize (bussiness rule: admin's role is not allowed to use shopping features)
             HttpSession session = request.getSession(false);
+            boolean isAdmin = false;
+            if(session!=null) {
+                RegistrationDTO user = (RegistrationDTO) session.getAttribute("USER");
+                if(user!=null) {
+                    isAdmin = user.isRole();
+                }
+            }
+            if(isAdmin) {
+//                url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
+                url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
+                return; /// report the error to user
+            }
+            
+//            HttpSession session = request.getSession(false);
             //1. Cust goes to his/her cart placement
             if (session != null) {
                 //2. Cust takes his/her cart

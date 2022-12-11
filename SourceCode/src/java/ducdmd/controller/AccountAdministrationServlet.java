@@ -57,7 +57,7 @@ public class AccountAdministrationServlet extends HttpServlet {
                     }
                     else {
 //                        url = ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE;
-                        url = siteMaps.getProperty(MyApplicationConstants.AccountAdministrationFeature.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
+                        url = siteMaps.getProperty(MyApplicationConstants.ApplicationScope.ACCOUNT_FEATURE_CONSTRAINT_ERROR_PAGE);
                     }
                 }
             }
