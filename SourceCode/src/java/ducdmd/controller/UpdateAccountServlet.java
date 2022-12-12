@@ -74,7 +74,10 @@ public class UpdateAccountServlet extends HttpServlet {
 
             // 0. Check user's errors
             password = password.trim();
-            if (password.length() < 8 || password.length() > 20) { /// use regex for enhance UX
+            if(password.isEmpty()) {
+                
+            }
+            else if (password.length() < 8 || password.length() > 20) { /// use regex for enhance UX
                 errorFound = true;
                 errors.setPasswordLengthError("Password is required input from 8 to 20 characters");
             }
@@ -87,7 +90,9 @@ public class UpdateAccountServlet extends HttpServlet {
                 // 1. Call DAO
                 RegistrationDAO dao = new RegistrationDAO();
                 boolean result = true;
-                result = result && dao.updateAccountPassword(username, SHA256.getHash(password));
+                if(password.isEmpty()==false) {
+                    result = result && dao.updateAccountPassword(username, SHA256.getHash(password));
+                }
                 result = result && dao.updateAccountRole(username, role);
 
                 // 2. Refresh by call Search Function again using URL Rewriting

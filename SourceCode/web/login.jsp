@@ -17,7 +17,7 @@
         <!--<form action="DispatchController" method="POST">-->
         <form action="loginAction" method="POST">
             Username
-            <input type="text" name="txtUsername" value="" />
+            <input type="text" name="txtUsername" value="${param.txtUsername}" />
             <br>
             
             <br>
