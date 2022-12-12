@@ -34,7 +34,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author MSI
  */
-public class Authorization implements Filter {
+public class AuthorizationFilter implements Filter {
     
     private static final boolean debug = false;
 
@@ -43,7 +43,7 @@ public class Authorization implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public Authorization() {
+    public AuthorizationFilter() {
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
@@ -57,82 +57,29 @@ public class Authorization implements Filter {
 
         try {
             // Check logined-user exist in session ~ for case user in a session + url without any parameter + cookie timeout
-            HttpSession session = req.getSession(false);
-            if (session == null || session.getAttribute("USER") == null) { // ~ if NOT: session already has user => try to AUTO-LOGIN with USER
-                // 1. get candidate username:password pairs            
-                /// by cookies
-                Cookie[] cookies = req.getCookies();
-                String cookieUsername = null;
-                String cookiePassword = null;
-
-                if (cookies != null) {
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("username")) {
-                            cookieUsername = cookie.getValue();
-                        }
-
-                        if (cookie.getName().equals("password")) {
-                            cookiePassword = cookie.getValue();
-                        }
-                    }
-                } // end cookies has existed
-
-                // 2. Check valid username:password
-                RegistrationDAO dao = new RegistrationDAO();
-
-                RegistrationDTO result = null;
-                String username = null;
-                String password = null;
-
-                /// Check cookie's pair  
-                if (cookieUsername != null && cookiePassword != null) {                    
-                    result = dao.checkLogin(cookieUsername, SHA256.getHash(cookiePassword));
-                    if (result != null) {
-                        username = cookieUsername;
-                        password = cookiePassword;
-                    }
-                }
-
-                /// 2.2 Process result
-                Boolean role = null;
-                if (result != null) {
-
-                    /// 2.2.1 Saving username:password for session tracking
-                    session = req.getSession(true); /// need be existed
-                    session.setAttribute("USER", result);
-                } // end of auto login successfully
-                else {
-
-                } // end of auto login fail
-            }
-
-            Boolean role = null; // un-logined
-
-            session = req.getSession(); // session is existed surely
+            HttpSession session = req.getSession(); // session is existed surely
             RegistrationDTO user = (RegistrationDTO) session.getAttribute("USER");
             
+            // 1. Get role
+            Boolean role = null;
             if (user != null) { // logined
                 role = user.isRole();            
             }
 
-            /// 2.2.3 Authoriztion for user in session
+            /// 2 Authoriztion for user
             ducdmd.authorization.Authorization authorization = new ducdmd.authorization.Authorization();
             List<Pair<String, String>> featureNavs = authorization.getFeatureNavs(role); /// null for unlogined-user, true for admin, and false for cust
             session.setAttribute("FEATURE_NAVS", featureNavs);
             // end of already user acc exist in session
 //            System.out.println("User's request from: " + role);
-    }
-    catch (NoSuchAlgorithmException ex) {
+        } /*catch (NoSuchAlgorithmException ex) {
             log("AuthorizationFilter _PASSWORD_HASHING: " + ex.getMessage());
-    }
-    catch (SQLException ex) {
+        } catch (SQLException ex) {
             log("AuthorizationFilter _SQL: " + ex.getMessage());
-    }
-    catch (NamingException ex) {
+        } catch (NamingException ex) {
             log("AuthorizationFilter _Naming: " + ex.getMessage());
-    }
-    finally {
-            
+        }*/ finally {
+
         }
     }    
     
@@ -184,7 +131,7 @@ public class Authorization implements Filter {
         try {
             chain.doFilter(request, response);
         } catch (Throwable t) {
-            log(t.getMessage());
+            log("Authorization:doFilter(): " + t.getMessage());
         }
         
         doAfterProcessing(request, response);
