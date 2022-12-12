@@ -1,27 +1,21 @@
-# Documentation Writing
+# 🥪 Book Store Management 1.0
+### #javawebapplicationdevelopment
 
-Be completed: December 12, 2022
-Done: No
-Order: 7
+## Table of Contents
+- [Resources](#resources)
+- [Description](#description)
+- [Live Demo](#live-demo--here)
+- [Technology](#technology)
+- [How can get started](#how-can-get-started)
+- [License & Copyright](sqljdbc42.jarr)
 
-## 🥪 Book Store Management 1.0
-#javawebapplicationdevelopment
-
-## **🏷️ Resources:**
+## **Resources:**
 
 | # | Resource | Description |
 | --- | --- | --- |
 | 1 | [Book Store Management 1.0](https://github.com/ducdmd152/BookStoreManagement_1.0) | The documentation about my web app for Book Store’s context. |
 | 2 | [MVC2 Notebook](https://github.com/ducdmd152/BookStoreManagement_1.0/tree/main/MVC2) | My self-notes on the learning path for the flow and something related MVC2 model. |
 | 3 | [SourceCode](https://github.com/ducdmd152/BookStoreManagement_1.0/tree/main/SourceCode) | The folder contains the source code of the project. |
-
-## Table of Contents
-
-- [Description](#description)
-- [Live Demo](#live-demo--here)
-- [Technology](#technology)
-- [How can get started](#how-can-get-started)
-- [License & Copyright](sqljdbc42.jarr)
 
 ## Description
 
@@ -79,7 +73,7 @@ In addition, customers also support the Register feature.
         maybe it looks like C:\Program Files\Apache Software Foundation\Apache Tomcat 8.0.27\lib.
 - Database:
     - Execute the [BOOK_STORE.sql script](https://github.com/ducdmd152/BookStoreManagement_1.0/blob/main/BOOK_STORE.sql)
-    - Customize the content in `[context.xml](https://github.com/ducdmd152/BookStoreManagement_1.0/blob/main/SourceCode/web/META-INF/context.xml)` for adapting to your machine.
+    - Customize the content in [context.xml](https://github.com/ducdmd152/BookStoreManagement_1.0/blob/main/SourceCode/web/META-INF/context.xml) for adapting to your machine.
    
 
 ## License & Copyright
