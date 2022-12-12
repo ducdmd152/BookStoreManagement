@@ -7,7 +7,7 @@
 - [Live Demo](#live-demo--here)
 - [Technology](#technology)
 - [How can get started](#how-can-get-started)
-- [License & Copyright](sqljdbc42.jarr)
+- [License & Copyright](#license--copyright)
 
 ## **Resources:**
 
