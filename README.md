@@ -19,7 +19,7 @@
 
 ## Description
 
-- A bookstore web application for buying books
+- A bookstore web application for buying books.
 - Users are divided into 2 main roles: Admin & customers.
 - Both roles are authenticated through the Login feature;
 In addition, customers also support the Register feature.
