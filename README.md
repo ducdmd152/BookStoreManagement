@@ -69,7 +69,7 @@ In addition, customers also support the Register feature.
     - Download the [Source Code here](https://github.com/ducdmd152/BookStoreManagement_1.0/tree/main/SourceCode).
     - Open the downloaded project on Netbeans:
         - Import JSTL 1.2.1 library that supports by IDE
-        - Import [sqlJDBC42.jar]() which you can download here into the lib folder of Tomcat,
+        - Import [sqlJDBC42.jar](https://github.com/ducdmd152/BookStoreManagement_1.0/blob/main/sqljdbc42.jarr) which you can download here into the lib folder of Tomcat,
         maybe it looks like C:\Program Files\Apache Software Foundation\Apache Tomcat 8.0.27\lib.
 - Database:
     - Execute the [BOOK_STORE.sql script](https://github.com/ducdmd152/BookStoreManagement_1.0/blob/main/BOOK_STORE.sql)
