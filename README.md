@@ -23,16 +23,18 @@
 - Users are divided into 2 main roles: Admin & customers.
 - Both roles are authenticated through the Login feature;
 - In addition, customers are also supported the Register feature.
+- Note*: *You can operate as a customer and buy the book without login.*
 - As an admin, we can do some operations to manage accounts like search, delete or update.
 - As a customer, we can do some operations to order books like:
-    - View book in the store.
+    - View books in the store.
     - Cart’s actions:
         - Add books to the cart.
         - View books in the cart.
         - Remove books from the cart.
     - Checkout:
-        - Fill in the delivery information.
-    - Note*: *You can operate as a customer and buy the book without login.*
+        - View the details of the prepared order. 
+        - Fill in the delivery information.  
+        - Receive the corresponding bill about the order.  
 - This web is tested for screens and features on desktops; not yet for mobile.
 
 ## Live Demo: 👉 [here](https://youtu.be/2roK4iK80VU)
