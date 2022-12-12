@@ -22,7 +22,7 @@
 - A bookstore web application for buying books.
 - Users are divided into 2 main roles: Admin & customers.
 - Both roles are authenticated through the Login feature;
-In addition, customers also support the Register feature.
+- In addition, customers are also supported the Register feature.
 - As an admin, we can do some operations to manage accounts like search, delete or update.
 - As a customer, we can do some operations to order books like:
     - View book in the store.
