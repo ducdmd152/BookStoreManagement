@@ -14,7 +14,7 @@
 | # | Resource | Description |
 | --- | --- | --- |
 | 1 | [Book Store Management 1.0](https://github.com/ducdmd152/BookStoreManagement_1.0) | The documentation about my web app for Book Store’s context. |
-| 2 | [MVC2 Notebook](https://github.com/ducdmd152/BookStoreManagement_1.0/tree/main/MVC2) | My self-notes on the learning path for the flow and something related MVC2 model. |
+| 2 | [MVC2 Notebook](https://ducdmd152.github.io/PRJ301/PRJ301HandbookResources/MVC2%20a3c4b9344b0e4f0bb4711b98b5a9a6ed.html) | My self-notes on the learning path for the flow and something related MVC2 model. |
 | 3 | [SourceCode](https://github.com/ducdmd152/BookStoreManagement_1.0/tree/main/SourceCode) | The folder contains the source code of the project. |
 
 ## Description
