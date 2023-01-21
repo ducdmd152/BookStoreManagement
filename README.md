@@ -1,6 +1,7 @@
 # 🥪 Book Store Management 1.0
+### Author: **[Duc Dao](https://beacons.ai/ducdmd152)**
 ### #javawebapplicationdevelopment
-
+--------------------------------------------------
 ## Table of Contents
 - [Resources](#resources)
 - [Description](#description)
@@ -8,7 +9,7 @@
 - [Technology](#technology)
 - [How can get started](#how-can-get-started)
 - [License & Copyright](#license--copyright)
-
+--------------------------------------------------
 ## **Resources:**
 
 | # | Resource | Description |
