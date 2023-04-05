@@ -1,4 +1,4 @@
-# 🥪 Book Store Management 1.0
+# 📘 Book Store Management 1.0
 ### Author: **[Duc Dao](https://beacons.ai/ducdmd152)**
 ### #javawebapplicationdevelopment
 --------------------------------------------------
